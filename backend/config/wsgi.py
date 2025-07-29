@@ -1,5 +1,5 @@
 """
-WSGI config for api_tests project.
+WSGI config for openCollab project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
