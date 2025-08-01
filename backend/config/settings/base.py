@@ -23,7 +23,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -110,5 +112,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DRF Configuration
 REST_FRAMEWORK = {
-    # Add your DRF configuration here, e.g., authentication classes, pagination, etc.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
+
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.CustomUser'
