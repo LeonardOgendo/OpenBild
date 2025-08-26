@@ -1,6 +1,7 @@
 
 from pathlib import Path
 import os
+from datetime import timedelta
 from dotenv import load_dotenv
 
 
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'apps.accounts',
 ]
 
@@ -115,6 +117,16 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+# JWT configuration
+
+SIMPLE_JWT = {
+     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),   # short-lived for security
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),      # long-lived for usability
+    "ROTATE_REFRESH_TOKENS": True,                   # rotate refresh tokens on use
+    "BLACKLIST_AFTER_ROTATION": True,                # prevent reuse of old refresh tokens
+    "AUTH_HEADER_TYPES": ("Bearer",), 
 }
 
 # Custom User Model
