@@ -36,13 +36,8 @@ class LogoutView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
-        refresh_token = request.data.get("refresh")from rest_framework import status, generics, permissions
-        from rest_framework.response import Response
-        from rest_framework.permissions import AllowAny
-        from rest_framework_simplejwt.views import TokenObtainPairView
-        from rest_framework_simplejwt.tokens import RefreshToken
-        from .serializers import RegisterSerializer, CustomTokenObtainPairSerializer
-        
+        refresh_token = request.data.get("refresh")
+     
         if not refresh_token:
             return Response({ "detail": "Refresh token is required" }, status=status.HTTP_400_BAD_REQUEST)
         
